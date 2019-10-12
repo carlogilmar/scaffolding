@@ -3,5 +3,7 @@ defmodule Mix.Tasks.ScaffoldView do
 
   def run([view_name]) do
     IO.puts "Creando tu view #{view_name}, gracias por usar esto!"
+    res = System.cmd("pwd", [])
+    IO.inspect res
   end
 end
