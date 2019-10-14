@@ -24,7 +24,6 @@ defmodule ScaffoldingEngine do
     _ = System.cmd("mkdir", ["lib/#{app_name}_web/templates/#{controller_downcase}"])
 
     Enum.each(files_to_generate, fn {file, path} ->
-      IO.puts("\n Building file #{file}")
       template = File.stream!(Path.join(:code.priv_dir(:scaffolding), file))
       {:ok, body} = template.path |> File.read()
       content = EEx.eval_string(body, attrs)
@@ -32,7 +31,7 @@ defmodule ScaffoldingEngine do
     end)
 
     IO.puts(" :: Scaffolding Generator Done! :: ")
-    IO.puts " Please update your router.ex file adding the follow line:"
+    IO.puts "\n Please update your router.ex file adding the follow line:"
     IO.puts("\n >>> get \"/#{controller_downcase}\", #{controller_capitalized}Controller, :index")
   end
 end
