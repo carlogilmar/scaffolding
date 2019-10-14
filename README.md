@@ -9,7 +9,7 @@ This project is for help you to generate the **phoenix controllers** and also **
 ```elixir
 def deps do
   [
-    {:scaffolding, git: "git://github.com/carlogilmar/scaffolding.git", only: [:dev]}
+    {:scaffolding, "~> 0.1.0", only: [:dev]}
   ]
 end
 ```
