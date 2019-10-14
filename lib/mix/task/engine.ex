@@ -32,6 +32,8 @@ defmodule ScaffoldingEngine do
     end)
 
     IO.puts(" :: Scaffolding Generator Done! :: ")
+    IO.puts " Please update your router.ex file adding the follow line:"
+    IO.puts("\n >>> get \"/#{controller_downcase}\", #{controller_capitalized}Controller, :index")
   end
 end
 
