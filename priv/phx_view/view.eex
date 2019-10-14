@@ -1,0 +1,3 @@
+defmodule <%= webapp_name %>.<%= controller %>View do
+  use <%= webapp_name %>, :view
+end
