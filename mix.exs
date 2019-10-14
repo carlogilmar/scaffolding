@@ -6,8 +6,32 @@ defmodule Scaffolding.MixProject do
       app: :scaffolding,
       version: "0.1.0",
       elixir: "~> 1.9",
+      description: description(),
+      package: package(),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      name: "scaffolding",
+      source_url: "https://github.com/carlogilmar/scaffolding",
+      docs: [
+        main: "readme",
+        extras: ["README.md"]
+      ]
+    ]
+  end
+
+  defp description do
+    """
+      Scaffolding dep for generate view controllers and live views
+    """
+  end
+
+  defp package do
+    [
+      name: "scaffolding",
+      files: ["lib", "mix.exs", "README*"],
+      maintainers: ["Carlo Gilmar"],
+      licenses: ["BSD 3-Clause License"],
+      links: %{"GitHub" => "https://github.com/carlogilmar/scaffolding"}
     ]
   end
 
