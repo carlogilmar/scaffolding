@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.ScaffoldView do
+defmodule Mix.Tasks.CreateController do
   use Mix.Task
 
   def run([view_name]) do
