@@ -57,8 +57,9 @@ defmodule ScaffoldingEngine do
        "lib/#{app_name}_web/templates/#{controller_downcase}/index.html.leex"}
     ]
 
-    # Create folder
+    # Create folder for live views and templates
     _ = System.cmd("mkdir", ["lib/#{app_name}_web/live"])
+    _ = System.cmd("mkdir", ["lib/#{app_name}_web/templates/#{controller_downcase}"])
 
     Enum.each(files_to_generate, fn {file, path} ->
 			IO.puts "Building... #{file}"
