@@ -5,8 +5,6 @@ defmodule ScaffoldingEngine do
 		controller_downcase = String.downcase(controller_name)
 		controller_capitalized = String.capitalize(controller_name)
 
-		#app_name = "scalathon"
-		#app_capitalized = String.capitalize(app_name)
 		{mix_project_name, app_name, webapp_name} = ScaffoldingUtil.get_app_names(app_name)
 
 		# Attrs for fill templates
@@ -26,15 +24,15 @@ defmodule ScaffoldingEngine do
 		# Create folder
 		_ = System.cmd("mkdir", ["lib/#{app_name}_web/templates/#{controller_downcase}"])
 
-		#Enum.each(files_to_generate, fn {file, path} ->
-		#  IO.puts("\n Construyendo archivo #{file}")
-		#  template = File.stream!(Path.join(:code.priv_dir(:scalathon), file))
-		#  {:ok, body} = template.path |> File.read()
-		#  content = EEx.eval_string(body, attrs)
-		#  IO.inspect(path)
+		Enum.each(files_to_generate, fn {file, path} ->
+		  IO.puts("\n Building file #{file}")
+		  template = File.stream!(Path.join(:code.priv_dir(:scaffolding), file))
+		  {:ok, body} = template.path |> File.read()
+		  content = EEx.eval_string(body, attrs)
+		  :ok = File.write(path, content)
+		end)
 
-		#  :ok = File.write(path, content)
-		#end)
+		IO.puts " :: Scaffolding Generator Done! :: "
 	end
 end
 
