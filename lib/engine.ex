@@ -72,7 +72,7 @@ defmodule ScaffoldingEngine do
 
     IO.puts(" :: Scaffolding Generator Done! :: ")
     IO.puts "\n Please update your router.ex file adding the follow line:"
-    IO.puts("\n >>> get \"/#{controller_downcase}\", #{controller_capitalized}Live")
+    IO.puts("\n >>> live \"/#{controller_downcase}\", #{controller_capitalized}Live")
   end
 end
 
