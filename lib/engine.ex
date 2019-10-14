@@ -1,5 +1,4 @@
 defmodule ScaffoldingEngine do
-
   def generate_view(controller_name, app_name) do
     controller_downcase = String.downcase(controller_name)
     controller_capitalized = String.capitalize(controller_name)
@@ -32,7 +31,7 @@ defmodule ScaffoldingEngine do
     end)
 
     IO.puts(" :: Scaffolding Generator Done! :: ")
-    IO.puts "\n Please update your router.ex file adding the follow line:"
+    IO.puts("\n Please update your router.ex file adding the follow line:")
     IO.puts("\n >>> get \"/#{controller_downcase}\", #{controller_capitalized}Controller, :index")
   end
 
@@ -50,8 +49,7 @@ defmodule ScaffoldingEngine do
     ]
 
     files_to_generate = [
-      {"phx_view/live.eex",
-       "lib/#{app_name}_web/live/#{controller_downcase}_live.ex"},
+      {"phx_view/live.eex", "lib/#{app_name}_web/live/#{controller_downcase}_live.ex"},
       {"phx_view/view.eex", "lib/#{app_name}_web/views/#{controller_downcase}_view.ex"},
       {"phx_view/live_index.eex",
        "lib/#{app_name}_web/templates/#{controller_downcase}/index.html.leex"}
@@ -68,7 +66,7 @@ defmodule ScaffoldingEngine do
     end)
 
     IO.puts(" :: Scaffolding Generator Done! :: ")
-    IO.puts "\n Please update your router.ex file adding the follow line:"
+    IO.puts("\n Please update your router.ex file adding the follow line:")
     IO.puts("\n >>> get \"/#{controller_downcase}\", #{controller_capitalized}Live")
   end
 end
