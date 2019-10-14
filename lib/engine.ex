@@ -1,4 +1,14 @@
 defmodule ScaffoldingEngine do
+
+  @doc """
+  This function generate the phoenix controller,
+  it needs 2 args: the controller name and the app_name (atom)
+
+  This function is called inside the mix tasks
+
+  iex> ScaffoldingEngine.generate_view("page1", :app_name)
+
+  """
   def generate_view(controller_name, app_name) do
     controller_downcase = String.downcase(controller_name)
     controller_capitalized = String.capitalize(controller_name)
@@ -35,6 +45,15 @@ defmodule ScaffoldingEngine do
     IO.puts("\n >>> get \"/#{controller_downcase}\", #{controller_capitalized}Controller, :index")
   end
 
+  @doc """
+  This function generate the phoenix controller,
+  it needs 2 args: the controller name and the app_name (atom)
+
+  This function is called inside the mix tasks
+
+  iex> ScaffoldingEngine.generate_live_view("page1", :app_name)
+
+  """
   def generate_live_view(controller_name, app_name) do
     controller_downcase = String.downcase(controller_name)
     controller_capitalized = String.capitalize(controller_name)

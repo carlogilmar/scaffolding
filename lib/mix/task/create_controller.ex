@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.CreateController do
+  @moduledoc false
   use Mix.Task
 
   def run([view_name]) do

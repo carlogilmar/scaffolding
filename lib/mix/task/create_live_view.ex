@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.CreateLiveView do
+  @moduledoc false
   use Mix.Task
 
   def run([view_name]) do
