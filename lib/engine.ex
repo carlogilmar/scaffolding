@@ -62,9 +62,7 @@ defmodule ScaffoldingEngine do
     _ = System.cmd("mkdir", ["lib/#{app_name}_web/templates/#{controller_downcase}"])
 
     Enum.each(files_to_generate, fn {file, path} ->
-			IO.puts "Building... #{file}"
       template = File.stream!(Path.join(:code.priv_dir(:scaffolding), file))
-			IO.inspect template
       {:ok, body} = template.path |> File.read()
       content = EEx.eval_string(body, attrs)
       :ok = File.write(path, content)
