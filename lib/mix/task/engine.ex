@@ -5,7 +5,7 @@ defmodule ScaffoldingEngine do
 		controller_downcase = String.downcase(controller_name)
 		controller_capitalized = String.capitalize(controller_name)
 
-		{mix_project_name, app_name, webapp_name} = ScaffoldingUtil.get_app_names(app_name)
+		{_mix_project_name, app_name, webapp_name} = ScaffoldingUtil.get_app_names(app_name)
 
 		# Attrs for fill templates
 		attrs = [
