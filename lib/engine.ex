@@ -1,4 +1,5 @@
 defmodule ScaffoldingEngine do
+
   def generate_view(controller_name, app_name) do
     controller_downcase = String.downcase(controller_name)
     controller_capitalized = String.capitalize(controller_name)
@@ -33,6 +34,42 @@ defmodule ScaffoldingEngine do
     IO.puts(" :: Scaffolding Generator Done! :: ")
     IO.puts "\n Please update your router.ex file adding the follow line:"
     IO.puts("\n >>> get \"/#{controller_downcase}\", #{controller_capitalized}Controller, :index")
+  end
+
+  def generate_live_view(controller_name, app_name) do
+    controller_downcase = String.downcase(controller_name)
+    controller_capitalized = String.capitalize(controller_name)
+
+    {_mix_project_name, app_name, webapp_name} = ScaffoldingUtil.get_app_names(app_name)
+
+    # Attrs for fill templates
+    attrs = [
+      webapp_name: webapp_name,
+      controller: controller_capitalized,
+      controller_downcase: controller_downcase
+    ]
+
+    files_to_generate = [
+      {"phx_view/live.eex",
+       "lib/#{app_name}_web/live/#{controller_downcase}_live.ex"},
+      {"phx_view/view.eex", "lib/#{app_name}_web/views/#{controller_downcase}_view.ex"},
+      {"phx_view/live_index.eex",
+       "lib/#{app_name}_web/templates/#{controller_downcase}/index.html.leex"}
+    ]
+
+    # Create folder
+    _ = System.cmd("mkdir", ["lib/#{app_name}_web/live"])
+
+    Enum.each(files_to_generate, fn {file, path} ->
+      template = File.stream!(Path.join(:code.priv_dir(:scaffolding), file))
+      {:ok, body} = template.path |> File.read()
+      content = EEx.eval_string(body, attrs)
+      :ok = File.write(path, content)
+    end)
+
+    IO.puts(" :: Scaffolding Generator Done! :: ")
+    IO.puts "\n Please update your router.ex file adding the follow line:"
+    IO.puts("\n >>> get \"/#{controller_downcase}\", #{controller_capitalized}Live")
   end
 end
 
