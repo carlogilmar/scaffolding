@@ -9,10 +9,13 @@ This project is for help you to generate the **phoenix controllers** and also **
 ```elixir
 def deps do
   [
-    {:scaffolding, "~> 0.1.0", only: [:dev]}
+    {:scaffolding, git: "git://github.com/carlogilmar/scaffolding.git", only: [:dev]}
   ]
 end
 ```
+
+*TODO*
+I have troubles using this way: `{:scaffolding, "~> 0.1.0", only: [:dev]}`, I don't know why the priv directory can't be downloaded into the scaffolding dep. Use the suggestion instead.
 
 ## How to use
 
