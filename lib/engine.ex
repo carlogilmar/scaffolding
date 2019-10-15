@@ -34,9 +34,13 @@ defmodule ScaffoldingEngine do
     _ = System.cmd("mkdir", ["lib/#{app_name}_web/templates/#{controller_downcase}"])
 
     Enum.each(files_to_generate, fn {file, path} ->
+      IO.puts "Building ************ #{file}"
       template = File.stream!(Path.join(:code.priv_dir(:scaffolding), file))
+      IO.puts "Template done"
       {:ok, body} = template.path |> File.read()
+      IO.puts "Body read done"
       content = EEx.eval_string(body, attrs)
+      IO.puts "Content build done"
       :ok = File.write(path, content)
     end)
 
@@ -79,9 +83,13 @@ defmodule ScaffoldingEngine do
     _ = System.cmd("mkdir", ["lib/#{app_name}_web/templates/#{controller_downcase}"])
 
     Enum.each(files_to_generate, fn {file, path} ->
+      IO.puts "Building Live view************ #{file}"
       template = File.stream!(Path.join(:code.priv_dir(:scaffolding), file))
+      IO.puts "Template done"
       {:ok, body} = template.path |> File.read()
+      IO.puts "Body read done"
       content = EEx.eval_string(body, attrs)
+      IO.puts "Content build done"
       :ok = File.write(path, content)
     end)
 
