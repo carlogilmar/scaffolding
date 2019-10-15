@@ -35,6 +35,7 @@ defmodule ScaffoldingEngine do
 
     Enum.each(files_to_generate, fn {file, path} ->
       IO.puts "Building ************ #{file}"
+      IO.inspect :code.priv_dir(:scaffolding)
       template = File.stream!(Path.join(:code.priv_dir(:scaffolding), file))
       IO.puts "Template done"
       {:ok, body} = template.path |> File.read()
